@@ -121,7 +121,7 @@ public class MainActivity extends Activity {
 			
 		}
 		
-		if(requestCode == CAMERA_RESULT && resultCode == RESULT_OK && null != data){
+		if(requestCode == CAMERA_RESULT && resultCode == RESULT_OK){
 			/**
 			 * 和上面调用一样默认调用相机不加保存位置
 			 * 返回的是经过压缩的图片
@@ -130,7 +130,7 @@ public class MainActivity extends Activity {
 			Bitmap bmpBitmap=(Bitmap)extras.get("data");
 			imgView.setImageBitmap(bmpBitmap);
 			*/
-			Bitmap bitmap =  BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + "img_tmp.jpg");
+			Bitmap bitmap =  BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + "/img_tmp.jpg");
 			
 			//保存到相册中
 			MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "", "");
