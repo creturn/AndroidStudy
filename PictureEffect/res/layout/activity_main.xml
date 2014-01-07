@@ -40,6 +40,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
-        android:text="信息" />
+        android:text="复古" />
 
 </RelativeLayout>
