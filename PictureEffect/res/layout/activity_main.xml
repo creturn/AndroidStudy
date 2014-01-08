@@ -35,11 +35,21 @@
         android:text="相册" />
 
     <Button
+        android:id="@+id/btn_crop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/pt_pic"
+        android:layout_alignBottom="@+id/pt_pic"
+        android:layout_toLeftOf="@+id/pt_pic"
+        android:text="裁切" />
+
+    <Button
         android:id="@+id/btn_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
+        android:layout_alignBaseline="@+id/cm_pic"
+        android:layout_alignBottom="@+id/cm_pic"
+        android:layout_toRightOf="@+id/cm_pic"
         android:text="复古" />
 
 </RelativeLayout>

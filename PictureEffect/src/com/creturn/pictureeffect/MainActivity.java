@@ -2,8 +2,10 @@ package com.creturn.pictureeffect;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +13,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,6 +21,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -30,10 +34,13 @@ public class MainActivity extends Activity {
 	private Button btn_pt;
 	private Button btn_info;
 	private Button btn_cm;
+	private Button btn_crop;
 	private ImageView imgView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,    
+	    WindowManager.LayoutParams.FLAG_FULLSCREEN); 
 		setContentView(R.layout.activity_main);
 		initUI();
 		initEvent();
@@ -44,6 +51,7 @@ public class MainActivity extends Activity {
 		btn_pt = (Button) findViewById(R.id.pt_pic);
 		btn_info = (Button) findViewById(R.id.btn_info);
 		btn_cm = (Button) findViewById(R.id.cm_pic);
+		btn_crop = (Button) findViewById(R.id.btn_crop);
 		imgView = (ImageView) findViewById(R.id.imageView1);
 	}
 
@@ -79,6 +87,25 @@ public class MainActivity extends Activity {
 				Log.i(LOG_NAME,"old remember" + Environment.getExternalStorageDirectory().getPath());
 				Bitmap newpic = oldRemeber(((BitmapDrawable)imgView.getDrawable()).getBitmap());
 				imgView.setImageBitmap(newpic);
+			}
+		});
+		//处理裁剪
+		btn_crop.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(getApplicationContext(), CropActivity.class);
+//				intent.putExtra("BitmapImage", ((BitmapDrawable)imgView.getDrawable()).getBitmap());
+				saveBitmap(((BitmapDrawable)imgView.getDrawable()).getBitmap());
+				File f = new File(Environment.getExternalStorageDirectory(),"crop_tmp_img.png");
+				try {
+					f.createNewFile();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				startActivity(intent);
 			}
 		});
 	}
@@ -196,5 +223,26 @@ public class MainActivity extends Activity {
 		Matrix matrix = new Matrix();
 		matrix.postScale(ScaleWidth/bmp.getWidth(), ScaleHeight/bmp.getHeight());
 		return Bitmap.createBitmap(bmp,0,0,bmp.getWidth(), bmp.getHeight(), matrix, true);
+	}
+
+	/**
+	 * 保存成为bitmap
+	 * @param bitmap
+	 */
+	@SuppressLint("SdCardPath")
+	public void saveBitmap(Bitmap bitmap){
+		File file = new File(Environment.getExternalStorageDirectory(),"crop_tmp_img.png");
+		FileOutputStream out;
+		try {
+			out = new FileOutputStream(file);
+			if (bitmap.compress(Bitmap.CompressFormat.PNG, 70, out)) {
+				out.flush();
+				out.close();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
