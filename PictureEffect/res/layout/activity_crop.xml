@@ -13,11 +13,8 @@
    		    android:id="@+id/CropImageView"
    		    android:layout_width="wrap_content"
    		    android:layout_height="wrap_content"
-   		    android:layout_above="@+id/btn_return"
    		    android:layout_alignParentLeft="true"
-   		    android:layout_alignParentRight="true"
-   		    android:layout_alignParentTop="true"
-   		    android:layout_gravity="center" />
+   		    android:layout_alignParentRight="true"/>
 
    		<Button
    		    android:id="@+id/btn_return"
@@ -25,6 +22,6 @@
    		    android:layout_height="wrap_content"
    		    android:layout_alignLeft="@+id/CropImageView"
    		    android:layout_alignParentBottom="true"
+   		    android:layout_marginBottom="27dp"
    		    android:text="返回" />
-
 </RelativeLayout>

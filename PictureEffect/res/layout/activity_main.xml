@@ -27,11 +27,20 @@
         android:text="拍照" />
 
     <Button
+        android:id="@+id/btn_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cm_pic"
+        android:layout_alignBottom="@+id/cm_pic"
+        android:layout_toRightOf="@+id/cm_pic"
+        android:text="复古" />
+
+    <Button
         android:id="@+id/pt_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/imageView1"
+        android:layout_below="@+id/imageView1"
         android:text="相册" />
 
     <Button
@@ -44,12 +53,23 @@
         android:text="裁切" />
 
     <Button
-        android:id="@+id/btn_info"
+        android:id="@+id/btn_upload"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/cm_pic"
-        android:layout_alignBottom="@+id/cm_pic"
-        android:layout_toRightOf="@+id/cm_pic"
-        android:text="复古" />
+        android:layout_above="@+id/pt_pic"
+        android:layout_alignRight="@+id/imageView1"
+        android:layout_marginRight="31dp"
+        android:text="上传" />
+
+    <TextView
+        android:id="@+id/txt_upload_porgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_upload"
+        android:layout_alignBottom="@+id/btn_upload"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_marginLeft="20dp"
+        android:text="上传进度" />
 
 </RelativeLayout>

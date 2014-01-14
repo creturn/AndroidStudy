@@ -68,18 +68,20 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class id {
         public static final int CropImageView=0x7f040003;
-        public static final int CropOverlayView=0x7f04000b;
-        public static final int ImageView_image=0x7f04000a;
-        public static final int action_settings=0x7f04000c;
-        public static final int btn_crop=0x7f040008;
-        public static final int btn_info=0x7f040009;
+        public static final int CropOverlayView=0x7f04000d;
+        public static final int ImageView_image=0x7f04000c;
+        public static final int action_settings=0x7f04000e;
+        public static final int btn_crop=0x7f040009;
+        public static final int btn_info=0x7f040007;
         public static final int btn_return=0x7f040004;
+        public static final int btn_upload=0x7f04000a;
         public static final int cm_pic=0x7f040006;
         public static final int imageView1=0x7f040005;
         public static final int off=0x7f040002;
         public static final int on=0x7f040000;
         public static final int onTouch=0x7f040001;
-        public static final int pt_pic=0x7f040007;
+        public static final int pt_pic=0x7f040008;
+        public static final int txt_upload_porgress=0x7f04000b;
     }
     public static final class layout {
         public static final int activity_crop=0x7f030000;
